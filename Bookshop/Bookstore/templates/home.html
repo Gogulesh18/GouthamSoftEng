@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookshop automation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+            display: flex;
+            justify-content: space-evenly;
+            background-color: aqua;
+            padding: 30px;
+            margin: 0;
+        }
+        li:hover{
+            color:red;
+            cursor: pointer;
+        
+}
+        button{
+            padding: 10px;
+            border-radius: 5px;
+        }
+        button:hover{
+            background-color: blue;
+            color: white;
+        }
+        li{
+            font-size: larger;
+            padding: 5PX;
+        }
+        a{
+            text-decoration: none;
+        }
+        a:hover{
+            color: red;
+        }
+        .foot {
+            background-color: aqua;
+            padding: 20px 0;
+            color: #333; /* Text color */
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-section {
+            padding: 20px;
+        }
+        
+        .footer-section h2 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 20px;
+        }
+        h2{
+            padding-bottom: 15px;
+            font-size: xx-large;
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <ul>
+        <h2><i class="fa fa-book" style="font-size:36px"></i>BookLand</h2>
+        <li>
+            <i class="fa fa-home"></i>Home
+        </li>
+        <li>
+            about
+        </li>
+        <li>
+            <i class="fa fa-group"></i>contact
+        </li>
+        <li>
+            <i class="fa fa-cog"></i>services
+        </li>
+        {% if user.is_authenticated %}
+        <li class="b"> Welcome,{{user.username}}</li>
+        <li><a href="{% url 'logout' %}" >Logout</a></li>
+        {% else %}
+        <li><a href="{% url 'signup' %}" onclick="notraverse()">Signup</a></li>
+        <li><a href="{% url 'login' %}" onclick="notraverse()">Login</a></li>
+        {% endif %}
+    </ul>
+    <footer class="foot">
+        <div class="footer-content">
+            <div class="footer-section about">
+                <h2>About Us</h2>
+                <p>Lorem ipsum dolor sit amet.
+                </p>
+            </div>
+            <div class="footer-section contact">
+                <h2>Contact Us</h2>
+                <p>Phone number: 0487469</p>
+                <p>Email: info@example.com</p>
+            </div>
+            <div class="footer-section follow">
+                <h2>Follow Us</h2>
+                <p>Youtube: Bookstore_official</p>
+                <p>Instagram: Bookstore_off</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Bookshop Automation. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script type="text/javascript">
+        function notraverse()
+         {
+             window.history.forward()
+         }
+        notraverse();
+        window.onload = noBack;
+        window.onpageshow = function(evt) { if (evt.persisted) notraverse() }
+        window.onunload = function() { void (0) }
+    </script>
+</body>
+</html>
